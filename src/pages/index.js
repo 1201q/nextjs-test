@@ -7,9 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Home({ data }) {
-  const router = useRouter();
-
   const handleClick = (id) => {
+    const router = useRouter();
     router.push(
       {
         pathname: "/detail",
