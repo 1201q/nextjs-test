@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Home({ data }) {
+  const router = useRouter();
   const handleClick = (id) => {
-    const router = useRouter();
     router.push(
       {
         pathname: "/detail",
@@ -29,10 +29,10 @@ export default function Home({ data }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ query }) => {
   try {
     const data = await axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get(`https://jsonplaceholder.typicode.com/posts?id=${query.id}`)
       .then((res) => res.data);
     return { props: { data } };
   } catch (error) {
