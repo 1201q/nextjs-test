@@ -1,10 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+// import Head from "next/head";
+// import Image from "next/image";
+// import { Inter } from "next/font/google";
+// import styles from "@/styles/Home.module.css";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
 export default function Home({ data }) {
   const router = useRouter();
@@ -21,9 +22,9 @@ export default function Home({ data }) {
   return (
     <>
       {data.map((item) => (
-        <div onClick={() => handleClick(item.id, item.title)} key={item.id}>
+        <Button onClick={() => handleClick(item.id, item.title)} key={item.id}>
           {item.title}
-        </div>
+        </Button>
       ))}
     </>
   );
@@ -39,3 +40,11 @@ export const getServerSideProps = async () => {
     return { props: {} };
   }
 };
+
+const Button = styled.div`
+  border: 1px solid gray;
+
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+`;
