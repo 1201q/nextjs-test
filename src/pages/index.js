@@ -6,25 +6,24 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import handler from "./api/hello";
 
 export default function Home({ data }) {
   const router = useRouter();
   const handleClick = (id, title) => {
-    router.push(
-      {
-        pathname: "/detail",
-        query: { id, title },
-      },
-      `/detail/${id}`
-    );
+    router.push(`/detail/${id}/${title}`);
   };
+
+  axios.get("http://localhost:3000/api/hello").then((res) => console.log(res));
 
   return (
     <>
       {data.map((item) => (
-        <Button onClick={() => handleClick(item.id, item.title)} key={item.id}>
-          {item.title}
-        </Button>
+        <Link key={item.id} href={`/detail/${item.id}/${item.title}`}>
+          <Button onClick={() => handleClick(item.id, item.title)}>
+            {item.title}
+          </Button>
+        </Link>
       ))}
     </>
   );
