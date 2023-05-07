@@ -14,7 +14,9 @@ export default function Home({ data }) {
     router.push(`/detail/${id}/${title}`);
   };
 
-  axios.get("http://localhost:3000/api/hello").then((res) => console.log(res));
+  axios
+    .get(process.env.NEXT_PUBLIC_API_URL + "/api/hello")
+    .then((res) => console.log(res));
 
   return (
     <>
