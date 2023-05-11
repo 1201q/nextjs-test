@@ -4,13 +4,13 @@ import Image from "next/image";
 
 const Article = ({ item, img }) => {
   return (
-    <Container key={item.id}>
+    <Container>
       <ImgBox>
         <img src={img.thumbnailUrl} />
       </ImgBox>
       <Box>
-        <h4>{item.body}</h4>
-        <p>{item.title}</p>
+        <Title>{item.title}</Title>
+        <Body>{item.body}</Body>
         <SubinfoBox>몇 일전</SubinfoBox>
       </Box>
       <WriterBox>1</WriterBox>
@@ -63,23 +63,24 @@ const ImgBox = styled.div`
 const Box = styled.div`
   width: 100%;
   padding: 16px;
+`;
 
-  h4 {
-    font-size: 16px;
-    width: 280px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-bottom: 4px;
-  }
+const Title = styled.div`
+  /* width: 100%; */
+  font-size: 16px;
 
-  p {
-    width: 280px;
-    color: gray;
-    font-weight: 100;
-    height: 63px;
-    margin-bottom: 24px;
-  }
+  overflow: hidden;
+  /* white-space: nowrap; */
+  /* text-overflow: ellipsis; */
+  margin-bottom: 4px;
+`;
+
+const Body = styled.p`
+  color: gray;
+  font-weight: 100;
+  height: 63px;
+  margin-bottom: 24px;
+  overflow: hidden;
 `;
 
 const SubinfoBox = styled.div`

@@ -13,7 +13,9 @@ export default function Home({ photos, posts }) {
       <Wrapper>
         <MainContainer>
           {posts?.map((item, index) => (
-            <Article item={item} img={photos[index]} />
+            <Link href={`/detail/${item.title}`}>
+              <Article key={item.id} item={item} img={photos[index]} />
+            </Link>
           ))}
         </MainContainer>
       </Wrapper>
